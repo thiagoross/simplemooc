@@ -14,7 +14,7 @@ class ContactCourse(forms.Form):
 		label='Mensagem/Dúvida', widget=forms.Textarea
 	)
 
-	def send_email(self, course):
+	def send_mail(self, course):
 		subject = '[%s] Contato' % course
 		message = 'Nome: %(name)s;E-mail: %(email)s;%(message)s'
 		context = {
