@@ -1,0 +1,5 @@
+*.pyc
+staticfiles
+simplemooc/db.sqlite3
+simplemooc/simplemooc/__pycache__
+simplemooc/simplemooc/media
