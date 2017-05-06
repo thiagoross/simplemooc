@@ -20,12 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'bm@bpz_g=cwlj^ir8f^03#jnwub-x3%59)yvez0f)g9_zw^0z!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
-
+TEMPLATE_DEBUG = False
 
 # Application definition
 
@@ -53,17 +50,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'simplemooc.urls'
 
 WSGI_APPLICATION = 'simplemooc.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -109,7 +95,9 @@ AUTH_USER_MODEL = 'accounts.User'
 
 # Update database configuration with $DATABASE_URL.
 import dj_database_url
-DATABASES['default'] = dj_database_url.config(conn_max_age=500)
+DATABASES = {
+    'default': dj_database_url.config(conn_max_age=500),
+}
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -125,3 +113,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+try:
+    from simplemooc.local_settings import *
+except ImportError:
+    pass

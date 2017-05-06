@@ -1,4 +1,5 @@
 *.pyc
+local_settings.py
 staticfiles
 simplemooc/db.sqlite3
 simplemooc/simplemooc/__pycache__
